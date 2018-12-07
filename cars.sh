@@ -1,12 +1,8 @@
 #! /bin/bash
 #cars.sh
 #Saniya Syed
-
-echo "My cars:"
-echo "-----------------"
-echo My_old_cars
-loop=True
-while loop
+CONTINUE=1
+while [ $CONTINUE -eq 1 ]
 do
 	echo "My Old Cars Inventory System"
 	echo "----------------------------"
@@ -23,16 +19,15 @@ do
 			read make
 			echo "Enter the model: "
 			read model
-			new_car = "$year+":"+$make+":"$model"
-			newcar>>"My_old_cars"
+			new_car="$year+":"+$make+":"$model"
+			echo "$year:$make:$model" >> My_old_cars
 			;;
 		"2" )
-			My_old_cars = $ sort My_old_cars
-			echo My_old_cars
+			sort My_old_cars
 			;;
 		"3" )
 			echo "Goodbye."
-			loop=False
+			CONTINUE=0
 			;;
 	esac
 done
